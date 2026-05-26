@@ -1,10 +1,9 @@
 import OpenAI from 'openai'
 
-const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY })
-
 export async function POST(request) {
+  const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY })
   try {
-    const { text, articleId } = await request.json()
+    const { text } = await request.json()
 
     if (!text) {
       return new Response('Missing text', { status: 400 })
